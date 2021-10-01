@@ -111,12 +111,19 @@ describe("findWinner", () => {
     test(" winner is ", () => {
         expect(findWinner(board3)).toBe('0')
     })
-    const board4 = [ ["0", "0", null],
-                     ["0", null, "X"],
+    const board4 = [["0", "0", null],
+                    ["0", null, "X"],
                     ["X", "X", "0"] ]
 
     test(" winner is ,no winner ", () => {
         expect(findWinner(board4)).toBe(null)
+    })
+    const board5 = [["0", "0", "X"],
+                    ["0", "X", "X"],
+                    ["X", "X", "0"] ]
+
+    test(" winner is ,(diagnol) ", () => {
+        expect(findWinner(board5)).toBe('X')
     })
 })
 

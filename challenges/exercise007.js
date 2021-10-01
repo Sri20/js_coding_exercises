@@ -141,21 +141,24 @@ const findWinner = board => {
   //console.log(board[0][0])
   let winner=null
   let winswitch = 0
-    //diagnolwise
+
+    //diagnolwise 
   let i=0
   let j=0
-  if (board[i][j] == board[i+1][j+1] && board[i][j] == board[i+2][j+2]) {
+  if ((board[i][j] == board[i+1][j+1] && board[i][j] == board[i+2][j+2]) || 
+      (board[i][j+2]==board[i+1][j+1] && board[i][j+2] == board[i+2][j])
+    ) {
     winswitch=1
-    winner=board[i][j]
-    //console.log('dianol',i,j)
-   
+    winner=board[i+1][j+1]
+    //console.log('diagnol',i,j)
+  
   }
 
   //row wise 
   
   for(let i=0,j=0;i<3 && winswitch ==0 ;i++){
       if ((board[i][j] == board[i][j+1]) && 
-         (board[i][j] == board[i][j+2] ) ) {
+        (board[i][j] == board[i][j+2] ) ) {
         winswitch=1
         winner=board[i][j]
        // console.log('1st',i,j)

@@ -59,7 +59,7 @@ function checkIngredients(menu, ingredient) {
     for (let j=0;j<menu[i].ingredients.length;j++){
      // console.log(menu[i].ingredients)
       if( menu[i].ingredients[j]== ingredient){
-        console.log(menu[i].ingredients[j])
+        ////console.log(menu[i].ingredients[j])
         return true  
       }
     }
@@ -71,24 +71,6 @@ function duplicateNumbers(arr1, arr2) {
   if (arr1 === undefined) throw new Error("arr1 is required");
   if (arr2 === undefined) throw new Error("arr2 is required");
   // Your code here!
-  
-    /* for (let k=0;k<result.length;k++){
-             if (arr1[i]==arr2[j]){  
-               if(result[k]!=arr2[j] && result[k] > arr2[j]){
-                 tempa = result[k]
-                 result[k]=arr2[j]  
-               }
-               result.push(tempa)
-             }
-           }*/
-          /* if (result.length ==0 && arr1[i]==arr2[j]){
-             console.log('first time')
-             result.push(tempa)
-           }*/
-          
-         
-          
-    
 
   let result=[]
   for(let i=0;i<arr1.length;i++){
@@ -96,21 +78,21 @@ function duplicateNumbers(arr1, arr2) {
       let tempa = arr2[j]
       let change=1
       if (arr1[i]==arr2[j]) {
- 
+
       for (let k=0;k<result.length;k++){
        // console.log('insidehee')
          //    console.log(result,tempa)
-             if (result[k]==tempa){
+            if (result[k]==tempa){
                //console.log(result[k])
                //console.log('dont put duplicates in array')
-               change=0
-             }
-             if(result[k]!=tempa && result[k] > tempa){
+              change=0
+            }
+            if(result[k]!=tempa && result[k] > tempa){
                // sort ascending while adding to result
-               let tempb =tempa
+              let tempb =tempa
               tempa = result[k]
               result[k]= tempb   
-             }
+            }
             }
            // result.push(tempa)
           
@@ -120,11 +102,9 @@ function duplicateNumbers(arr1, arr2) {
       }   
   }
     
- }
-
-
- console.log(result)
- return result
+}
+//console.log(result)
+return result
       
 
 }
