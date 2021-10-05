@@ -14,8 +14,6 @@ const sumMultiples = arr => {
       result = result + num
     }
   })
-
-//console.log(result)
 return result
 } ;
 
@@ -24,24 +22,20 @@ return result
  * @param {String} str
  * @returns {Boolean}
  */
-const isValidDNA = str => {
+const isValidDNA = str =>  {
   if (str === undefined) throw new Error("str is required");
   //console.log(str)
   let strarr=str.split('')
-   let valid = true
+  let valid = true
   strarr.forEach(function(strchar) {
-    //console.log(strchar)
     if ( !(strchar == 'T' ||
         strchar == 'A' ||
         strchar =='C'  ||
         strchar == 'G' ) ){
-      //console.log('invalid')
       valid = false
     }
     })
-    //console.log(valid)
     return valid 
-  
 };
 
 /**
@@ -55,22 +49,17 @@ const getComplementaryDNA = str => {
   let strarr=str.split('')
   let valid = true
   strarr.forEach(function(strchar) {
-    //console.log(strchar)
     if ( !(strchar == 'T' ||
         strchar == 'A' ||
         strchar =='C'  ||
         strchar == 'G' ) ){
-      //console.log('invalid')
       valid = false
     }
     })
-    //console.log(valid)
     if(valid){
     let resultarr= strarr.map(function(strchar) {
         if (strchar == 'T'){
-          //console.log(strchar)
           strchar='A'
-          //console.log(strchar)
         }
         else if (strchar == 'A' ){
             strchar ='T'
@@ -83,10 +72,8 @@ const getComplementaryDNA = str => {
         }
         return strchar
       })
-    result=resultarr.join('')
-    
+    result=resultarr.join('') 
     } 
-    //console.log(result) 
     return result
 };
 
@@ -97,13 +84,11 @@ const getComplementaryDNA = str => {
  */
 const isItPrime = n => {
   if (n === undefined) throw new Error("n is required");
-  
   let prime = false
   if (n!=0 && n!=1){
     prime = true
     let i=2
     while(prime && i<= n/2 && n!=2 ){
-    //console.log(i)
     if(n%i ==0){
         prime =false
       }
@@ -130,15 +115,12 @@ const createMatrix = (n, fill) => {
   const arr = []
   
   for (let i=0; i<n; i++) {
-    //arr[i] = new Array(n).fill(fill); 
     arr[i] = new Array(n).fill().map(function (numa) {  
       numa = fill
       return numa 
       })
   }
-  //console.log(arr)
   return arr
- 
 };
 
 
@@ -161,17 +143,12 @@ const areWeCovered = (staff, day) => {
   {
     return false
   }
-  
-  //console.log(staff.length)
   let staffcount = 0
-
   staff.forEach(function(member){
-    //console.log(member.rota)
     if(member.rota.includes(day)){
       staffcount += 1
     } 
   })
-  //console.log(staffcount,day)
   return (staffcount >= 3)
 
 };

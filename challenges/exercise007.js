@@ -4,16 +4,8 @@
  */
 const sumDigits = n => {
   if (n === undefined) throw new Error("n is required");
-
   let strarr =n.toString().split('') 
-  //if (n.length >= 2){
-  
-  let result = strarr.reduce((acc, num) => acc += parseInt(num), 0)
- // }
-  
-  //console.log(result)
-  return result
-
+  return (strarr.reduce((acc, num) => acc += parseInt(num), 0))
 };
 
 /**
@@ -28,19 +20,10 @@ const createRange = (start, end, step) => {
   if (start === undefined) throw new Error("start is required");
   if (end === undefined) throw new Error("end is required");
   if(step == undefined) { step = 1}
-let result=[]
-  
-//if its a decrementing range then negate step
-if(start > end){step = -step}
-
-//finding length of array
-const length = Math.floor(Math.abs((end - start) / step)) + 1
-
+  if(start > end)   {step = -step}           //if its a decrementing range then negate step
+const length = Math.floor(Math.abs((end - start) / step)) + 1    
 // sequence generator 
-result = Array.from({length}, (_, i) => start + (i * step));
-
-//console.log(result)
-return result
+return (Array.from({length}, (_, i) => start + (i * step)))
 };
 
 
@@ -83,8 +66,6 @@ const getScreentimeAlertList = (users, date) => {
     item1.forEach(function(item2){
       //access screentime array
     if(item2.date == date){
-      //console.log('found the date')
-      
       let sumusage =Object.values(item2.usage).reduce((a, b) => a + b);
       if (sumusage > 100){
         result.push(item.username)
@@ -92,7 +73,6 @@ const getScreentimeAlertList = (users, date) => {
     }
     })
   })
- // console.log(result)
   return result
 };
 
@@ -109,7 +89,6 @@ const getScreentimeAlertList = (users, date) => {
 const hexToRGB = hexStr => {
   if (hexStr === undefined) throw new Error("hexStr is required");
   if(hexStr.slice(0,1)=='#' && hexStr.length==7 ) {
-    //let RGBcode =  
     return(           'rgb(' +
                 (parseInt( (  hexStr.slice(1,3) ) ,16)).toString()  + ',' +
                 (parseInt( (  hexStr.slice(3,5) ) ,16)).toString()  + ',' +
@@ -120,10 +99,7 @@ const hexToRGB = hexStr => {
   else
   {
     return 'invalid'
-  }
-  
-  
-
+  } 
 };
 
 /**
@@ -138,7 +114,6 @@ const hexToRGB = hexStr => {
  */
 const findWinner = board => {
   if (board === undefined) throw new Error("board is required");
-  //console.log(board[0][0])
   let winner=null
   let winswitch = 0
 
@@ -150,8 +125,6 @@ const findWinner = board => {
     ) {
     winswitch=1
     winner=board[i+1][j+1]
-    //console.log('diagnol',i,j)
-  
   }
 
   //row wise 
@@ -161,7 +134,6 @@ const findWinner = board => {
         (board[i][j] == board[i][j+2] ) ) {
         winswitch=1
         winner=board[i][j]
-       // console.log('1st',i,j)
       }
     }
   // columnwise 
@@ -170,13 +142,9 @@ const findWinner = board => {
         board[i][j]== board[i+2][j]){
       winswitch=1
       winner=board[i][j]
-      //console.log('2nd',i,j)
     }
   }
-  
-//console.log(winner)
 return(winner)
-
 };
 
 module.exports = {
