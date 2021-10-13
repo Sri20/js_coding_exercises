@@ -4,7 +4,7 @@
  */
 const sumDigits = n => {
   if (n === undefined) throw new Error("n is required");
-  let strarr =n.toString().split('') 
+  let strarr = n.toString().split('')
   return (strarr.reduce((acc, num) => acc += parseInt(num), 0))
 };
 
@@ -19,11 +19,11 @@ const sumDigits = n => {
 const createRange = (start, end, step) => {
   if (start === undefined) throw new Error("start is required");
   if (end === undefined) throw new Error("end is required");
-  if(step == undefined) { step = 1}
-  if(start > end)   {step = -step}           //if its a decrementing range then negate step
-const length = Math.floor(Math.abs((end - start) / step)) + 1    
-// sequence generator 
-return (Array.from({length}, (_, i) => start + (i * step)))
+  if (step == undefined) { step = 1 }
+  if (start > end) { step = -step }           //if its a decrementing range then negate step
+  const length = Math.floor(Math.abs((end - start) / step)) + 1
+  // sequence generator 
+  return (Array.from({ length }, (_, i) => start + (i * step)))
 };
 
 
@@ -59,18 +59,18 @@ return (Array.from({length}, (_, i) => start + (i * step)))
 const getScreentimeAlertList = (users, date) => {
   if (users === undefined) throw new Error("users is required");
   if (date === undefined) throw new Error("date is required");
-  let result=[]
+  let result = []
   // access user array
-  users.forEach( function(item) {
-    let item1=JSON.parse(JSON.stringify(item.screenTime))
-    item1.forEach(function(item2){
+  users.forEach(function (item) {
+    let item1 = JSON.parse(JSON.stringify(item.screenTime))
+    item1.forEach(function (item2) {
       //access screentime array
-    if(item2.date == date){
-      let sumusage =Object.values(item2.usage).reduce((a, b) => a + b);
-      if (sumusage > 100){
-        result.push(item.username)
-    }
-    }
+      if (item2.date == date) {
+        let sumusage = Object.values(item2.usage).reduce((a, b) => a + b);
+        if (sumusage > 100) {
+          result.push(item.username)
+        }
+      }
     })
   })
   return result
@@ -88,18 +88,17 @@ const getScreentimeAlertList = (users, date) => {
  */
 const hexToRGB = hexStr => {
   if (hexStr === undefined) throw new Error("hexStr is required");
-  if(hexStr.slice(0,1)=='#' && hexStr.length==7 ) {
-    return(           'rgb(' +
-                (parseInt( (  hexStr.slice(1,3) ) ,16)).toString()  + ',' +
-                (parseInt( (  hexStr.slice(3,5) ) ,16)).toString()  + ',' +
-                (parseInt( (  hexStr.slice(5,7) ) ,16)).toString()  +
-                ')'
-  )
+  if (hexStr.slice(0, 1) == '#' && hexStr.length == 7) {
+    return ('rgb(' +
+      (parseInt((hexStr.slice(1, 3)), 16)).toString() + ',' +
+      (parseInt((hexStr.slice(3, 5)), 16)).toString() + ',' +
+      (parseInt((hexStr.slice(5, 7)), 16)).toString() +
+      ')'
+    )
   }
-  else
-  {
+  else {
     return 'invalid'
-  } 
+  }
 };
 
 /**
@@ -114,37 +113,37 @@ const hexToRGB = hexStr => {
  */
 const findWinner = board => {
   if (board === undefined) throw new Error("board is required");
-  let winner=null
+  let winner = null
   let winswitch = 0
 
-    //diagnolwise 
-  let i=0
-  let j=0
-  if ((board[i][j] == board[i+1][j+1] && board[i][j] == board[i+2][j+2]) || 
-      (board[i][j+2]==board[i+1][j+1] && board[i][j+2] == board[i+2][j])
-    ) {
-    winswitch=1
-    winner=board[i+1][j+1]
+  //diagnolwise 
+  let i = 0
+  let j = 0
+  if ((board[i][j] == board[i + 1][j + 1] && board[i][j] == board[i + 2][j + 2]) ||
+    (board[i][j + 2] == board[i + 1][j + 1] && board[i][j + 2] == board[i + 2][j])
+  ) {
+    winswitch = 1
+    winner = board[i + 1][j + 1]
   }
 
   //row wise 
-  
-  for(let i=0,j=0;i<3 && winswitch ==0 ;i++){
-      if ((board[i][j] == board[i][j+1]) && 
-        (board[i][j] == board[i][j+2] ) ) {
-        winswitch=1
-        winner=board[i][j]
-      }
-    }
-  // columnwise 
-  for(let i=0,j=0;j<3 && winswitch== 0 ;j++) {
-    if (board[i][j] == board[i+1][j] &&
-        board[i][j]== board[i+2][j]){
-      winswitch=1
-      winner=board[i][j]
+
+  for (let i = 0, j = 0; i < 3 && winswitch == 0; i++) {
+    if ((board[i][j] == board[i][j + 1]) &&
+      (board[i][j] == board[i][j + 2])) {
+      winswitch = 1
+      winner = board[i][j]
     }
   }
-return(winner)
+  // columnwise 
+  for (let i = 0, j = 0; j < 3 && winswitch == 0; j++) {
+    if (board[i][j] == board[i + 1][j] &&
+      board[i][j] == board[i + 2][j]) {
+      winswitch = 1
+      winner = board[i][j]
+    }
+  }
+  return (winner)
 };
 
 module.exports = {

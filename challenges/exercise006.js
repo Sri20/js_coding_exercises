@@ -7,35 +7,35 @@
 const sumMultiples = arr => {
   if (arr === undefined) throw new Error("arr is required");
   //loop through ,checks the number is multiple of 3 or 5
-  let result=0
+  let result = 0
 
-  arr.forEach(function(num) {
-    if (num%3==0 || num%5==0) {
+  arr.forEach((num) => {
+    if (num % 3 == 0 || num % 5 == 0) {
       result = result + num
     }
   })
-return result
-} ;
+  return result
+};
 
 /**
  * This function will receive a string of characters and should return true/false depending on whether it is a valid DNA string. A valid DNA string may contain characters C, G, T or A only.
  * @param {String} str
  * @returns {Boolean}
  */
-const isValidDNA = str =>  {
+const isValidDNA = str => {
   if (str === undefined) throw new Error("str is required");
   //console.log(str)
-  let strarr=str.split('')
+  let strarr = str.split('')
   let valid = true
-  strarr.forEach(function(strchar) {
-    if ( !(strchar == 'T' ||
-        strchar == 'A' ||
-        strchar =='C'  ||
-        strchar == 'G' ) ){
+  strarr.forEach((strchar) => {
+    if (!(strchar == 'T' ||
+      strchar == 'A' ||
+      strchar == 'C' ||
+      strchar == 'G')) {
       valid = false
     }
-    })
-    return valid 
+  })
+  return valid
 };
 
 /**
@@ -46,35 +46,35 @@ const isValidDNA = str =>  {
 const getComplementaryDNA = str => {
   if (str === undefined) throw new Error("str is required");
   let result = ''
-  let strarr=str.split('')
+  let strarr = str.split('')
   let valid = true
-  strarr.forEach(function(strchar) {
-    if ( !(strchar == 'T' ||
-        strchar == 'A' ||
-        strchar =='C'  ||
-        strchar == 'G' ) ){
+  strarr.forEach((strchar) => {
+    if (!(strchar == 'T' ||
+      strchar == 'A' ||
+      strchar == 'C' ||
+      strchar == 'G')) {
       valid = false
     }
+  })
+  if (valid) {
+    let resultarr = strarr.map((strchar) => {
+      if (strchar == 'T') {
+        strchar = 'A'
+      }
+      else if (strchar == 'A') {
+        strchar = 'T'
+      }
+      else if (strchar == 'C') {
+        strchar = 'G'
+      }
+      else if (strchar == 'G') {
+        strchar = 'C'
+      }
+      return strchar
     })
-    if(valid){
-    let resultarr= strarr.map(function(strchar) {
-        if (strchar == 'T'){
-          strchar='A'
-        }
-        else if (strchar == 'A' ){
-            strchar ='T'
-        }
-        else if (strchar =='C' ) {
-          strchar = 'G'
-        }
-        else if (strchar == 'G') {
-          strchar ='C'
-        }
-        return strchar
-      })
-    result=resultarr.join('') 
-    } 
-    return result
+    result = resultarr.join('')
+  }
+  return result
 };
 
 /**
@@ -85,17 +85,17 @@ const getComplementaryDNA = str => {
 const isItPrime = n => {
   if (n === undefined) throw new Error("n is required");
   let prime = false
-  if (n!=0 && n!=1){
+  if (n != 0 && n != 1) {
     prime = true
-    let i=2
-    while(prime && i<= n/2 && n!=2 ){
-    if(n%i ==0){
-        prime =false
+    let i = 2
+    while (prime && i <= n / 2 && n != 2) {
+      if (n % i == 0) {
+        prime = false
       }
-    i += 1
+      i += 1
+    }
   }
-}
-return prime
+  return prime
 };
 
 /**
@@ -113,12 +113,12 @@ const createMatrix = (n, fill) => {
   if (n === undefined) throw new Error("n is required");
   if (fill === undefined) throw new Error("fill is required");
   const arr = []
-  
-  for (let i=0; i<n; i++) {
-    arr[i] = new Array(n).fill().map(function (numa) {  
+
+  for (let i = 0; i < n; i++) {
+    arr[i] = new Array(n).fill().map((numa) => {
       numa = fill
-      return numa 
-      })
+      return numa
+    })
   }
   return arr
 };
@@ -139,15 +139,14 @@ const createMatrix = (n, fill) => {
 const areWeCovered = (staff, day) => {
   if (staff === undefined) throw new Error("staff is required");
   if (day === undefined) throw new Error("day is required");
-  if(staff.length==0)
-  {
+  if (staff.length == 0) {
     return false
   }
   let staffcount = 0
-  staff.forEach(function(member){
-    if(member.rota.includes(day)){
+  staff.forEach((member) => {
+    if (member.rota.includes(day)) {
       staffcount += 1
-    } 
+    }
   })
   return (staffcount >= 3)
 
